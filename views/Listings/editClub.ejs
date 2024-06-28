@@ -1,0 +1,35 @@
+<% layout("/layouts/boilerplate.ejs") %>
+<body>
+  <div class="row">
+    <div class="col-5 offset-3">
+      <h3 style="color: #121212;">Edit Club Details:</h3>
+      <form method="POST" action="/club/<%= club._id %>?_method=PUT"  enctype="multipart/form-data">
+        <label for="name" class="form-label" style="color: #121212">Name:</label>
+        <input type="text" id="name" name="name" class="form-control mb-3" value="<%= club.name %>" required />
+        <br>
+        <label for="meetingTime" class="form-label" style="color: #121212">Meeting Time:</label>
+        <input type="text" id="meetingTime" name="meetingTime" class="form-control mb-3" value="<%= club.meetingTime %>" required />
+        <br>
+        <label for="location" class="form-label" style="color: #121212">Location:</label>
+        <input type="text" id="location" name="location" class="form-control mb-3" value="<%= club.location %>" required />
+        <br>
+        <label for="description" class="form-label" style="color: #121212">Description:</label>
+        <textarea id="description" name="description" class="form-control mb-3"><%= club.description %></textarea>
+        <br>
+        <label for="organizer" class="form-label" style="color: #121212">Organizer:</label>
+        <input type="text" id="organizer" name="organizer" class="form-control mb-3" value="<%= club.organizer %>" required />
+        <br>
+        <div class="mb-3">
+        <label for="image" class="form-label" style="color: #121212"
+          >Upload New Image:</label
+        >
+        <input name="club[image]" type="file" class="form-control" />
+      </div>
+      <br />
+        <button type="submit" class="btn btn-dark">Save Changes</button>
+      </form>
+    </div>
+  </div>
+</body>
+
+

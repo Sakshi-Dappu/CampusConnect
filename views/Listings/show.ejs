@@ -1,0 +1,62 @@
+<% layout("/layouts/boilerplate.ejs") %>
+<br />
+<body>
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-6 col-md-8 col-sm-12">
+        <div
+          class="show text-center"
+          style="
+            border: 0.5rem solid rgb(254, 251, 251);
+            padding: 2rem;
+            background-color: rgb(144, 144, 214);
+          "
+        >
+          <h3><b><%= listing.name %></b></h3>
+          <p>
+            Owned By <b><i><%= listing.owner.username %></i></b>
+          </p>
+          <img src="<%= listing.image.url %>" class="img-fluid mb-3" />
+
+          <div class="card-body">
+            <p class="card-text">
+              <b>Date: </b><%= new
+              Date(listing.date).toLocaleDateString('en-IN', { weekday: 'short',
+              year: 'numeric', month: 'long', day: 'numeric' }) %>
+            </p>
+            <p class="card-text"><b>Time: </b><%= listing.time %></p>
+
+            <p class="card-text">
+              <b>Description: </b><%= listing.description %>
+            </p>
+            <p class="card-text"><b>Location: </b> <%= listing.location %></p>
+            <p class="card-text"><b>Organizer: </b> <%= listing.organizer %></p>
+            <% if( currUser && currUser._id.equals(listing.owner._id)) { %>
+
+            <a href="/Listings/<%=listing._id%>/editEvent"
+              ><button class="btn btn-light btn-block mb-2">Edit</button></a
+            >
+            <br />
+            <a href="/Listings/<%=listing._id%>/deleteEvent"
+              ><button class="btn btn-light btn-block mb-2">Delete</button></a
+            ><br />
+            <% } %> 
+           
+<% if(userIsParticipant) { %>
+            <button class="btn btn-secondary btn-block" disabled>
+              Already Participated
+            </button>
+            <% } %>
+            <% if(!userIsParticipant) { %>
+            <a href="/participate/event/<%=listing._id%>"
+              ><button class="btn btn-light btn-block">
+                Participate In Event
+              </button></a>
+            <% } %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br /><br /><br />
+  </div>
+</body>

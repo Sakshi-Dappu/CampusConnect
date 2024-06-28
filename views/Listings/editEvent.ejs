@@ -1,0 +1,126 @@
+<% layout("/layouts/boilerplate.ejs") %>
+<br />
+<body>
+  <form
+    method="POST"
+    action="/Listings/<%= listing._id%>?_method=PUT"
+    novalidate
+    class="needs-validation"
+    enctype="multipart/form-data" 
+  >
+    <div class="row">
+      <div class="col-5 offset-3">
+        <h3 style="color: #121212">Edit Event Details:</h3>
+
+        <div class="row">
+          <div class="mb-3 col-md-4">
+            <label for="name" class="form-label" style="color: #121212"
+              >Event Name:</label
+            >
+            <input
+              type="text"
+              id="name"
+              name="name" 
+              class="mb-3 form-control"
+              value="<%=listing.name%>"
+              required
+            />
+          </div>
+
+          <div class="mb-3 col-md-8">
+            <div class="invalid-feedback">Enter a valid event name</div>
+
+            <label for="date" class="form-label" style="color: #121212"
+              >Date</label
+            >
+            <input
+              type="text"
+              id="date"
+              name="date"
+              class="form-control"
+              value="   <%= new Date(listing.date).toLocaleDateString('en-IN', { weekday:
+    'short', year: 'numeric', month: 'long', day: 'numeric' }) %>"
+              class="mb-3"
+              required
+            />
+          </div>
+        </div>
+
+        <label for="description" class="form-label" style="color: #121212"
+          >Descritption:</label
+        >
+        <textarea
+          id="description"
+          name="description"
+          class="form-control mb-3"
+          required
+        >
+<%= listing.description %></textarea
+        >
+        <div class="invalid-feedback" style="color: #121212">
+          Enter a valid description
+        </div>
+
+        <label for="location" class="form-label" style="color: #121212"
+          >Location:</label
+        >
+        <input
+          type="text"
+          id="location"
+          name="location"
+          class="form-control mb-3"
+          required
+          value="<%= listing.location %>"
+        />
+
+        <div class="row">
+          <div class="mb-3 col-md-4">
+            <label for="time" class="form-label" style="color: #121212"
+              >Time:</label
+            >
+            <input
+              type="time"
+              id="time"
+              name="time"
+              class="form-control mb-3"
+              value="<%= listing.time %>"
+              required
+            />
+
+            <div class="invalid-feedback" style="color: #121212">
+              Time cannot be 00:00
+            </div>
+          </div>
+
+          <div class="mb-3 col-md-8">
+            <label for="organizer" class="form-label" style="color: #121212"
+              >Organizer</label
+            >
+            <input
+              type="text"
+              id="organizer"
+              name="organizer"
+              class="form-control mb-3"
+              required
+              value="<%= listing.organizer %>"
+            />
+            <div class="invalid-feedback">Enter a valid organizer name</div>
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="image" class="form-label" style="color: #121212"
+            >Upload New Image:</label
+          >
+          <input name="club[image]" type="file" class="form-control" />
+        </div>
+
+        <div class="invalid-feedback" style="color: #121212">
+          Enter a valid location
+        </div>
+
+        <button type="submit" class="btn btn-dark">Edit Changes</button>
+      </div>
+    </div>
+  </form>
+</body>
+<script src="/public/js/script.js"></script>

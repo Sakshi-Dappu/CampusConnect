@@ -1,0 +1,139 @@
+<% layout("/layouts/boilerplate.ejs") %>
+<body>
+  <form method="POST" action="/club/AddClub" novalidate class="needs-validation" enctype="multipart/form-data">
+    <div class="row">
+      <div class="col-5 offset-3 md-3">
+        <br />
+        <h3 style="color: #121212">Add New Club</h3>
+        <br />
+
+        <label for="name" class="form-label md-3" style="color: #121212">Club Name:</label>
+        <input
+          type="text"
+          id="name"
+          name="name"
+          class="form-control"
+          required
+        /><br />
+        <div class="invalid-feedback" >Enter a valid name</div>
+        <br />
+
+        <label for="description" class="form-label md-3" style="color: #121212">Description:</label>
+        <textarea
+          type="text"
+          class="description form-control"
+          id="description"
+          name="description"
+          required
+        ></textarea>
+        <div class="invalid-feedback">Enter a valid description</div>
+        <br />
+
+        <div class="row">
+          <div class="col-md-4">
+            <label for="meetingTime" class="form-label md-3" style="color: #121212">Meeting Time:</label>
+            <input
+              type="time"
+              class="form-control"
+              id="meetingTime"
+              name="meetingTime"
+              required
+            />
+            <div class="invalid-feedback">Time cannot be 00:00</div>
+            <br />
+          </div>
+          <div class="col-md-8">
+            <label for="organizer" class="form-label md-3" style="color: #121212">Organizer:</label>
+            <input
+              type="text"
+              class="form-control"
+              id="organizer"
+              name="organizer"
+              required
+            /> 
+            <div class="invalid-feedback">Enter a valid organizer name</div>
+            <br />
+          </div>
+        </div>
+
+        <label for="location" class="form-label md-3" style="color: #121212">Location:</label>
+        <input
+          type="text"
+          class="form-control"
+          id="location"
+          name="location"
+          required
+        />
+        <div class="invalid-feedback">Enter a valid location</div>
+        <br />
+        <div class="row">
+          <div class="mb-3">
+            <label for="image" style="color: #121212" class="form-label"
+              >Club Poster URL/Link:</label
+            >
+            <input 
+              name="club[image]"
+              type="file"
+              id="image"
+              class="form-control"
+              required
+            />
+          </div>
+        </div>
+        <br />
+
+        <button type="submit" class="btn btn-dark" >Join Club</button>
+      </div>
+    </div>
+  </form>
+</body>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const form = document.querySelector("form");
+    const nameInput = document.getElementById("name");
+    const descriptionInput = document.getElementById("description");
+    const meetingTimeInput = document.getElementById("meetingTime");
+    const organizerInput = document.getElementById("organizer");
+    const locationInput = document.getElementById("location");
+
+    form.addEventListener("submit", function (event) {
+      let valid = true;
+
+      // Check if time is 00:00
+      if (meetingTimeInput.value === "00:00") {
+        meetingTimeInput.classList.add("is-invalid");
+        meetingTimeInput.nextElementSibling.textContent = "Time cannot be 00:00";
+        meetingTimeInput.nextElementSibling.style.display = "block";
+        valid = false;
+      } else {
+        meetingTimeInput.classList.remove("is-invalid");
+        meetingTimeInput.nextElementSibling.style.display = "none";
+      }
+
+      // Check if name, description, organizer, and location are strings and not numbers
+      const stringInputs = [
+        nameInput,
+        descriptionInput,
+        organizerInput,
+        locationInput,
+      ];
+      stringInputs.forEach((input) => {
+        if (!isNaN(input.value) && input.value.trim() !== "") {
+          input.classList.add("is-invalid");
+          input.nextElementSibling.textContent = "Enter a valid " + input.name;
+          input.nextElementSibling.style.display = "block";
+          valid = false;
+        } else {
+          input.classList.remove("is-invalid");
+          input.nextElementSibling.style.display = "none";
+        }
+      });
+
+      if (!valid) {
+        event.preventDefault();
+      }
+    });
+  });
+</script>
+ 

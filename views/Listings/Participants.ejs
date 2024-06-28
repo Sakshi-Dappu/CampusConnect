@@ -1,0 +1,35 @@
+<% layout("/layouts/boilerplate.ejs") %>
+
+<body>
+  <div style="margin-left: 2rem">
+    <h2 style="color: rgb(144, 144, 214)">
+      Your Profile &nbsp;<i
+        class="fa-solid fa-circle-user fa-xl"
+        style="color: rgb(144, 144, 214)"
+      ></i>
+    </h2>
+    <hr style="color: #121212" />
+    <p style="color: #121212">Email:&nbsp;<%= userEmail %></p>
+    <p style="color: #121212">UserName :&nbsp;<%= username %></p>
+    <br />
+    <hr style="color: #121212" />
+    <h2 style="color: rgb(144, 144, 214)">Events Participated In</h2>
+
+
+
+    <ol>
+      <% eventDetails.forEach(event => { %>
+        <li>
+          <a href="/listings/<%= event.eventId %>"><%= event.eventName %></a> 
+        </li>
+      <% }) %>
+    </ol>
+  
+    <h3 style="color: rgb(144, 144, 214)">Clubs Participated</h3>
+    <ol>
+      <% clubDetails.forEach(club => { %>
+        <li>
+          <a href="/club/<%= club.clubId %>"><%= club.clubName %></a>
+        </li>
+      <% }) %>
+    </ol>

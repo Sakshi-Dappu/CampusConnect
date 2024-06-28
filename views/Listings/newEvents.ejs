@@ -1,0 +1,115 @@
+<% layout("/layouts/boilerplate.ejs") %>
+
+<body>
+  <form
+    action="/listings/AddEvent"
+    method="POST"
+    novalidate
+    class="needs-validation"
+    enctype="multipart/form-data"
+  >
+    <div class="row">
+      <div class="col-5 offset-3">
+        <h4 style="color: #121212">Add New Event</h4>
+        <div class="mb-3">
+          <label for="name" style="color: #121212" class="form-label"
+            >Event Name:</label
+          >
+          <input
+            type="text"
+            id="name"
+            name="listing[name]"
+            class="form-control"
+            placeholder="Hackathon"
+            required
+          />
+          <div class="valid-feedback">Event Name looks good!</div>
+        </div>
+
+        <div class="mb-3">
+          <label for="description" style="color: #121212" class="form-label"
+            >Description:</label
+          >
+          <textarea
+            id="description"
+            name="listing[description]"
+            class="form-control"
+            required
+          ></textarea>
+        </div>
+
+        <div class="row">
+          <div class="mb-3 col-md-4">
+            <label for="date" style="color: #121212" class="form-label"
+              >Date:</label
+            >
+            <input
+              type="date"
+              id="date"
+              name="listing[date]"
+              class="form-control"
+              required
+            />
+          </div>
+
+          <div class="mb-3 col-md-8">
+            <label for="time" style="color: #121212" class="form-label"
+              >Time:</label
+            >
+            <input
+              type="time"
+              id="time"
+              name="listing[time]"
+              class="form-control"
+              required
+            />
+            <div class="invalid-feedback">Enter a valid time</div>
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label for="location" style="color: #121212" class="form-label"
+            >Location:</label
+          >
+          <input
+            type="text"
+            id="location"
+            name="listing[location]"
+            class="form-control"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label for="organizer" style="color: #121212" class="form-label"
+            >Organizer:</label
+          >
+          <input
+            type="text"
+            id="organizer"
+            name="listing[organizer]"
+            class="form-control"
+            required
+          />
+          <div class="invalid-feedback">Enter Organizer's name</div>
+        </div>
+        <div class="row">
+          <div class="mb-3">
+            <label for="image" style="color: #121212" class="form-label"
+              >Event Poster URL/Link:</label
+            >
+            <input 
+              name="listing[image]"
+              type="file"
+              id="image"
+              class="form-control"
+              required
+            />
+          </div>
+        </div>
+        <button type="submit" class="btn btn-dark">Add Event</button>
+      </div>
+
+      <script src="/public/js/script.js"></script>
+    </div>
+  </form>
+</body>

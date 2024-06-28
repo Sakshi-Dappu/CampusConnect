@@ -1,0 +1,67 @@
+<% layout("/layouts/boilerplate.ejs") %>
+<body >
+
+
+<br>
+    <h4 style="color: rgb(144, 144, 214); margin-left: 38rem;"> You're participating in</h4>
+    <br>
+        <div class="container" >
+          <div class="row justify-content-center">
+            <div class="col-lg-6 col-md-8 col-sm-12">
+              <div
+                class="show text-center"
+                style="
+                  border: 0.5rem solid rgb(254, 251, 251);
+                  padding: 2rem;
+                  background-color: rgb(144, 144, 214);
+                 height: 30rem;
+                  width: 30rem"
+               
+              >
+                <h3><b><%= listing.name %></b></h3>
+                <p>Owned By <b><i><%= listing.owner.username %></i></b></p>
+                <img src="<%= listing.image.url %>"style="height: 10rem; width: 10rem" class="img-fluid mb-3" />
+      
+                <div class="card-body" >
+                  <p class="card-text">
+                    <b>Date: </b><%= new
+                    Date(listing.date).toLocaleDateString('en-IN', { weekday: 'short',
+                    year: 'numeric', month: 'long', day: 'numeric' }) %>
+                  </p>
+                  <p class="card-text"><b>Time: </b><%= listing.time %></p>
+      
+                  <p class="card-text">
+                    <b>Description: </b><%= listing.description %>
+                  </p>
+                  <p class="card-text">
+                    <b>Location: </b> <%= listing.location %>
+                  </p>
+                  <p class="card-text">
+                    <b>Organizer: </b> <%= listing.organizer %>
+                </div>
+              </div>
+            </div>
+          </div>
+          <br /><br /><br />
+        </div>
+      
+        
+
+
+
+
+    <form method="POST" action="/participate/event/<%=listing._id%>" novalidate class = "needs-validation">
+        <div class="row">
+            <div class="col-5 offset-3">
+        <h2 style="color: #121212;">Participation Form</h2>
+        <label for="name" class="form-label" style="color: #121212;">Enter your Name:</label>
+        <input type="text" id="name" name="name" class="form-control"required>
+        <label for="email" class="form-label" style="color: #121212;">Email:</label>
+        <input type="email" id="email" name="email" class="form-control" required>
+        
+        <br>
+        <button class="btn btn-dark">Participate</button>
+    </form>
+</div>
+</div>
+</body>

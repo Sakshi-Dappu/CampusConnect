@@ -1,0 +1,47 @@
+<% layout("/layouts/boilerplate.ejs") %>
+<body>
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-6 col-md-8 col-sm-12">
+        <div
+          class="show text-center"
+          style="
+            border: 0.5rem solid rgb(254, 251, 251);
+            padding: 2rem;
+            background-color: rgb(144, 144, 214) !important;
+          "
+        >
+          <form method="POST" action="/AddSchool">
+            <h2><b><%= schoollisting.name %></b></h2>
+            <p>Owned By <b><i><%= schoollisting.owner.username %></i></b></p>
+            <img
+              src="<%= schoollisting.image.url %>"
+              class="img-fluid mb-3"
+            />
+            <p class="card-text">
+              <b> Dean: &nbsp;</b><%= schoollisting.dean %>
+            </p>
+            <p class="card-text">
+              <b>Location: &nbsp;</b><%= schoollisting.location %>
+            </p>
+            <p class="card-text">
+              <b>Description: &nbsp;</b><%= schoollisting.description %>
+            </p>
+            <p class="card-text">
+              <b>Website: &nbsp;</b> <%= schoollisting.website %>
+            </p>
+          </form>
+          <% if( currUser && currUser._id.equals(schoollisting.owner._id)) { %>
+          <a href="/school/<%= schoollisting._id %>/editSchool"
+            ><button class="btn btn-light btn-block mb-2" type="button">Edit</button></a
+          >
+          <a href="/school/<%= schoollisting._id %>/deleteSchool"
+            ><button class="btn btn-light btn-block mb-2" type="button">Delete</button></a
+          >
+          <% } %>
+        </div> 
+      </div>
+    </div>
+    <br /><br /><br /> 
+  </div>
+</body>

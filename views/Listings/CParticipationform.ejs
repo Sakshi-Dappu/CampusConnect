@@ -1,0 +1,99 @@
+<% layout("/layouts/boilerplate.ejs") %>
+
+<body>
+  <h4 style="color: rgb(144, 144, 214); margin-left: 38rem">You're Join</h4>
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-6 col-md-8 col-sm-12">
+        <div
+          class="show text-center"
+          style="
+            border: 0.5rem solid rgb(254, 251, 251);
+            padding: 2rem;
+            background-color: rgb(144, 144, 214) !important;
+            height: 30rem;
+            width: 30rem;
+          "
+        >
+          <h3><b><%= club.name %></b></h3>
+          <p>
+            Owned By <b><i><%= club.owner.username %></i></b>
+          </p>
+          <img
+            src="<%= club.image.url %>"
+            style="height: 10rem; width: 10rem"
+            class="img-fluid mb-3"
+          />
+          <div class="card-body">
+            <p class="card-text">
+              <strong>Meeting Time:</strong>&nbsp; <%= club.meetingTime %>
+            </p>
+            <p class="card-text">
+              <strong>Location:</strong> &nbsp;<%= club.location %>
+            </p>
+           
+            <p class="card-text">
+              <strong>Organizer:</strong> &nbsp;<%= club.organizer %>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br /><br /><br />
+  </div>
+
+  <div class="row">
+    <div class="col-5 offset-3">
+      <form
+        method="POST"
+        action="/participate/club/<%= club._id%>"
+        novalidate
+        class="needs-validation"
+      >
+        <h1 style="color: #121212">Club Participation Form</h1>
+        <label for="text" class="form-label" style="color: #121212"
+          >Enter Your Name:</label
+        >
+        <input
+          type="text"
+          id="name"
+          name="name"
+          class="form-control"
+          required
+        />
+
+        <label for="text" class="form-label" style="color: #121212"
+          >Email:</label
+        >
+        <input
+          type="text"
+          id="email"
+          name="email"
+          class="form-control"
+          required
+        />
+        <br />
+        <button  class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#exampleModal">Join Club</button>
+      </form>
+      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+             Kindly check the Club Details in profile section
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Well Noted!</button>
+            
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+</body>

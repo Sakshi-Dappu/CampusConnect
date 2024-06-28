@@ -1,0 +1,193 @@
+<!--  -->
+
+<% layout("/layouts/boilerplate.ejs") %>
+
+<div class="body">
+  <div class="indexPg">
+    <!-- <button class="scroll-button left-events">&#10094;</button>
+    <button class="scroll-button right-events">&#10095;</button> -->
+
+    <form method="GET" action="/AddEvent">
+      <h2 class="Events sticky-header">
+        &nbsp; &nbsp; &nbsp; Events &nbsp;<i
+          class="fas fa-calendar-alt"
+         
+        ></i>
+
+        <hr />
+      </h2>
+
+      <div class="Events_container">
+        <br />
+        <ul>
+          <div class="Events_list">
+            <% for(let Listing of allListings) { %>
+
+            <a
+              href="/Listings/<%= Listing._id %>"
+              class="card-link btn view_details"
+            >
+              <div class="Events_card">
+                <div class="card" style="width: 18rem">
+                  <img
+                    src="<%= Listing.image.url %>"
+                    alt="<%= Listing.name %>"
+                    style="width: 100%"
+                  />
+                  <div class="card-body">
+                    <h5><%= Listing.name %></h5>
+                    <p class="card-text">
+                      <b>Date: </b><%= new
+                      Date(Listing.date).toLocaleDateString('en-IN', { weekday:
+                      'short', year: 'numeric', month: 'long', day: 'numeric' })
+                      %>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </a>
+
+            <!--  -->
+
+            <!--  -->
+
+            <% } %>
+          </div>
+        </ul>
+      </div>
+    </form>
+
+    <br />
+
+    <!-- <button class="scroll-button1 left-clubs">&#10094;</button>
+    <button class="scroll-button1 right-clubs">&#10095;</button> -->
+
+    <form method="GET" action="/AddClub">
+      <h2 class="Clubs sticky-header">
+        &nbsp; &nbsp; &nbsp; Clubs&nbsp;<i
+          class="fas fa-users"
+      
+        ></i>
+        <hr />
+      </h2>
+
+      <div class="Clubs_container">
+        <br />
+        <ul>
+          <div class="Clubs_list">
+            <% for(let club of allClubsListings) { %>
+            <a href="/club/<%= club._id %>" class="card-link btn view_details">
+              <div class="Clubs_card">
+                <div class="card" style="width: 18rem">
+                  <img
+                    src="<%= club.image.url %>"
+                    alt="<%= club.name %> Image"
+                    style="width: 100%"
+                  />
+                  <div class="card-body">
+                    <h5 class="card-title"><%= club.name %></h5>
+                    <br />
+                    <h6 class="card-text mb-2 text-body-secondary">
+                      <%= club.organizer %>
+                    </h6>
+                  </div>
+                </div>
+              </div>
+            </a>
+            <% } %>
+          </div>
+        </ul>
+      </div>
+    </form>
+
+    <br />
+
+    <!-- <button class="scroll-button2 left-schools">&#10094;</button>
+    <button class="scroll-button2 right-schools">&#10095;</button> -->
+    <form method="GET" action="/AddSchool">
+      <h2 class="Schools sticky-header">
+        &nbsp; &nbsp; Schools & Courses
+        <i class="fas fa-school" ></i>
+      </h2>
+
+      <div class="Schools">
+        <hr style="color: #121212" />
+
+        <div class="Schools_container">
+          <br />
+          <ul>
+            <div class="Schools_list">
+              <% for(let school of allSchoolsListings) { %>
+              <a
+                href="/school/<%= school._id %>"
+                class="card-link btn view_details"
+              >
+                <div class="Schools_card">
+                  <div class="card">
+                    <img
+                      src="<%= school.image.url %>"
+                      alt="<%= school.name %>"
+                      style="width: 100%"
+                    />
+                    <div class="card-body">
+                      <h9 class="card-title"><%= school.name %></h9>
+                      <br />Dean:
+                      <h6><%= school.dean %></h6>
+                      <br />
+                      <h6 class="card-text mb-2 text-body-secondary"></h6>
+                      <p class="card-text"></p>
+                    </div>
+                  </div>
+                </div>
+              </a>
+              <% } %>
+            </div>
+          </ul>
+        </div>
+      </div>
+      <hr style="color: #121212" />
+
+      <br />
+          
+       
+
+      <h2 style="color: rgb(144,144,214);">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Campus HighLights</h2>
+      <div class="border border-4">
+      <figure class="figure">
+        <img src="/assets/IMG_20240620_153818_492.jpg" class="figure-img img-fluid rounded IAS_photo border border-3" alt="...">
+        <figcaption class="figure-caption text-end">UPSC Exam talk with I.A.S officer Vasant Dabholkar.</figcaption>
+      </figure>
+
+        <figure class="figure">
+          <img src="/assets/Screenshot 2024-06-23 182103.png" class="figure-img img-fluid rounded border border-3" alt="...">
+          <figcaption class="figure-caption text-end">International Execution.</figcaption>
+        </figure>
+                
+        <figure class="figure">
+          <img src="/assets/Screenshot 2024-06-23 182005.png" class="figure-img img-fluid rounded border border-3" alt="...">
+          <figcaption class="figure-caption text-end">Construction Yard Activity for Studio.</figcaption>
+        </figure>
+                
+        <figure class="figure">
+          <img src="/assets/Screenshot 2024-06-23 182217.png" class="figure-img img-fluid rounded border border-3" alt="...">
+          <figcaption class="figure-caption text-end">ADYPU Students Sponsored for International Execution
+            24 in Indonesia.</figcaption>
+        </figure>
+        <figure class="figure">
+          <img src="/assets/Screenshot 2024-06-23 193243.png" class="figure-img img-fluid rounded border border-3" alt="...">
+          <figcaption class="figure-caption text-end">Field Visit to Lexicon Rainbow Therapy and Child
+            Development Centre.</figcaption>
+        </figure>
+             
+      </div>
+
+
+        <br />
+        <br />
+        <br />
+
+        
+      </div>
+    </form>
+  </div>
+</div>
