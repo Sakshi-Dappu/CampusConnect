@@ -70,24 +70,9 @@ module.exports.EditListing = async (req, res) => {
   res.render("Listings/editEvent.ejs", { listing });
 };
 
-// module.exports.UpdateListing = async (req, res) => {
-//   let { id } = req.params;
-//   let listing = await Listing.findByIdAndUpdate(id, { ...req.body.listing });
-
-//   if (typeof req.file !== "undefined") {
-//     let url = req.file.path;
-//     let filename = req.file.filename;
-//     listing.image = { url, filename };
-//     await listing.save();
-//   }
-
-//   req.flash("success", " Event details updated !");
-//   res.redirect(`/Listings/${id}`);
-// };
-
 module.exports.UpdateListing = async (req, res) => {
   let { id } = req.params;
-  let listing = await Listing.findByIdAndUpdate(id, { ...req.body });
+  let listing = await Listing.findByIdAndUpdate(id, { ...req.body.listing });
 
   if (typeof req.file !== "undefined") {
     let url = req.file.path;
@@ -95,9 +80,12 @@ module.exports.UpdateListing = async (req, res) => {
     listing.image = { url, filename };
     await listing.save();
   }
-  req.flash("success", " Event details updated!");
+
+  req.flash("success", " Event details updated !");
   res.redirect(`/Listings/${id}`);
 };
+
+
 
 
 module.exports.destroyListing = async (req, res) => {

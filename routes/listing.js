@@ -24,7 +24,7 @@ router
  // .post("/AddEvent", wrapAsync(listingController.AddEventPostRoute));
   .post("/AddEvent",upload.single('listing[image]'),wrapAsync(listingController.AddEventPostRoute));
 
-//Show route for events
+//Show route for events 
 router.get("/:id", wrapAsync(listingController.showListing));
 
 //edit route for event
