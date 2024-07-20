@@ -43,6 +43,13 @@ body,
   
 }
 
+ h4{
+  color: rgb(144, 144, 214);
+  margin-left: 85rem;
+}
+
+
+
 .AddEvent,
 .AddClub,
 .AddSchool {

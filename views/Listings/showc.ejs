@@ -6,6 +6,11 @@
         <div class="show text-center" style="border: 0.5rem solid rgb(254, 251, 251); padding: 2rem; background-color: rgb(144, 144, 214) !important;">
           <h3><b><%= club.name %></b></h3>
           <p>Owned By <b><i><%= club.owner.username %></i></b></p>
+
+        <%  if(club.Updated_at && club.Updated_at.length > 0) { %>
+            <p>Updated At: <b><i><%= club.Updated_at %></i></b></p>
+
+       <%   } %>
           <img src="<%= club.image.url %>" class="img-fluid mb-3" />
           <div class="card-body">
             <p class="card-text"><strong>Meeting Time:</strong>&nbsp; <%= club.meetingTime %></p>

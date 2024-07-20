@@ -17,7 +17,7 @@ const sampleListings = [
     name: "Codathon",
     date: "2024-07-20",
     time: "4:40",
-    description:
+    description: 
       "A coding marathon where participants solve algorithmic problems.",
     location: "Engineering Building",
 

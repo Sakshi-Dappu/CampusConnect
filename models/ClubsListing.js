@@ -2,14 +2,14 @@
 
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-
+let Updated_at = new Date().toLocaleString();
 
 // Helper function to validate that a value is a string and not a number
 function isStringNotNumber(value) {
   return typeof value === 'string' && isNaN(value);
 }
-
-const ClubsListingSchema = new mongoose.Schema({
+ 
+let ClubSchemaDefinition = ({
   name: {
     type: String,
     required: true,
@@ -64,6 +64,14 @@ const ClubsListingSchema = new mongoose.Schema({
   }]
 
 });
+
+if(Updated_at.length > 0) {
+  ClubSchemaDefinition.Updated_at = {
+    type: String
+  }
+}
+
+const ClubsListingSchema = new mongoose.Schema(ClubSchemaDefinition);
 
 const ClubsListing = mongoose.model('ClubsListing', ClubsListingSchema);
 

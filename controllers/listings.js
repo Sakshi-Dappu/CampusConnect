@@ -72,7 +72,7 @@ module.exports.EditListing = async (req, res) => {
 
 module.exports.UpdateListing = async (req, res) => {
   let { id } = req.params;
-  let listing = await Listing.findByIdAndUpdate(id, { ...req.body.listing });
+  let listing = await Listing.findByIdAndUpdate(id, { ...req.body.listing, Updated_at: new Date().toLocaleString() });
 
   if (typeof req.file !== "undefined") {
     let url = req.file.path;

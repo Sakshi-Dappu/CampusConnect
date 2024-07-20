@@ -145,7 +145,7 @@ app.get("/search", async (req, res) => {
     res.render("Listings/searchResults", {
       query,
       eventResults,
-      clubResults,
+      clubResults, 
       Listing,
     });
   } catch (error) {

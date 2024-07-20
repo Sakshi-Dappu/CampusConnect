@@ -13,6 +13,10 @@
           "
         >
           <h3><b><%= listing.name %></b></h3>
+          <% if(listing.Updated_at && listing.Updated_at.length > 0) { %>
+         <p class="card-text"><b>Updated At: </b> <%= listing.Updated_at %></p> 
+
+         <%  } %>
           <p>
             Created By <b><i><%= listing.owner.username %></i></b>
           </p>

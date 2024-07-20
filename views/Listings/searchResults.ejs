@@ -11,7 +11,7 @@
         <% if (eventResults.length > 0) { %>
         <h3 style="color: rgb(144, 144, 214)">Events</h3>
 
-        <ul>
+        <ul> 
           <% eventResults.forEach(event => { %>
           <li>
             <a href="/Listings/<%= event._id %>">
@@ -68,9 +68,7 @@
           </li>
           <% }) %>
         </ul>
-        <% } else { %>
-        <p>No clubs found.</p>
-        <% } %>
+       <% } %>
       </div>
     </div>
   </div>

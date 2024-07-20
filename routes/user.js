@@ -46,7 +46,7 @@ router.post(
   async (req, res) => {
     req.flash("success", "Welcome back to CampusConnect! ");
     // res.redirect("/listings");
-    res.redirect(res.locals.redirectUrl);
+    res.redirect("/listings");
   }
 );
 

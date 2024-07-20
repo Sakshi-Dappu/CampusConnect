@@ -1,11 +1,11 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
-
+let Updated_at = new Date().toLocaleString();
 function isStringNotNumber(value) {
   return typeof value === "string" && isNaN(value);
 }
-
-const ListingSchema = new Schema({
+let schemaDefinition = 
+({
   name: {
     type: String,
     required: true,
@@ -64,7 +64,15 @@ const ListingSchema = new Schema({
     ref: "User",
   },
 });
- 
+
+if(Updated_at.length > 0) {
+  schemaDefinition.Updated_at =  {
+    type: String
+  }
+}
+
+
+const ListingSchema = new Schema(schemaDefinition);
 const Listing = mongoose.model("Listing", ListingSchema);
 
 module.exports = Listing;

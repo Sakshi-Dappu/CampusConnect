@@ -65,7 +65,7 @@ module.exports.editClub = async (req, res) => {
 
 module.exports.puteditClub = async (req, res) => {
   let { id } = req.params;
-  let club =  await ClubsListing.findByIdAndUpdate(id, { ...req.body.club });
+  let club =  await ClubsListing.findByIdAndUpdate(id, { ...req.body.club, Updated_at: new Date().toLocaleString() });
   
   if (typeof req.file !== "undefined") {
     let url = req.file.path;
@@ -79,17 +79,6 @@ module.exports.puteditClub = async (req, res) => {
 
 };
 
- // let { id } = req.params; 
-  // await ClubsListing.findByIdAndUpdate(id, { ...req.body });
-  // if (typeof req.file !== "undefined") {
-  //   let url = req.file.path;
-  //   let filename = req.file.filename;
-  //   club.image = { url, filename };
-  //   // await club.save();
-  // }
-  // console.log(ClubsListing);
-  // req.flash("success", " Club details updated !");
-  // res.redirect(`/club/${id}`);
 
 
 module.exports.deleteClub = async (req, res) => {
